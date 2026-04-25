@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <link rel="stylesheet" href="/src/index.css" />
+
+    <title>Chef</title>
+
+    <meta property="og:image" content="/og-preview.png" />
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Register Service Worker for caching
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {
+            console.log('Service Worker registration skipped');
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
